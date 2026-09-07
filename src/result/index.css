@@ -21,6 +21,7 @@ body {
 .result__header {
   position: sticky;
   top: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -63,6 +64,13 @@ body {
   color: #4a90d9;
 }
 
+.btn--ghost:disabled {
+  border-color: #e5e5e5;
+  color: #aaa;
+  background: #f7f7f7;
+  cursor: not-allowed;
+}
+
 .result__body {
   padding: 24px;
 }
@@ -75,6 +83,7 @@ body {
 .result__article-title {
   font-size: 22px;
   margin-bottom: 12px;
+  overflow-wrap: anywhere;
 }
 
 .result__quote {
@@ -83,11 +92,113 @@ body {
   color: #666;
   font-size: 14px;
   line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.result__quote a {
+  color: #4a90d9;
+}
+
+.result__status {
+  margin-top: 16px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  background: #f4f7fa;
+  color: #667085;
+  font-size: 13px;
+}
+
+.result__status--streaming {
+  background: #eef6ff;
+  color: #3175b9;
+}
+
+.result__status--complete {
+  background: #eef9f1;
+  color: #248a3d;
+}
+
+.result__status--error {
+  background: #fff1f1;
+  color: #c43d3d;
 }
 
 .result__content {
+  min-height: 240px;
   padding-top: 16px;
   font-size: 15px;
   line-height: 1.9;
   color: #333;
+}
+
+.result__markdown {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+}
+
+.result__markdown img {
+  max-width: 100%;
+  height: auto;
+}
+
+.result__markdown-frame {
+  min-height: 200px;
+}
+
+.result__cursor {
+  display: inline-block;
+  color: #4a90d9;
+  font-size: 16px;
+  line-height: 1;
+  animation: result-cursor-blink 0.9s step-end infinite;
+}
+
+@keyframes result-cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.result__placeholder {
+  display: grid;
+  min-height: 200px;
+  place-items: center;
+  padding: 32px;
+  border: 1px dashed #d9d9d9;
+  border-radius: 8px;
+  background: #fafafa;
+  color: #999;
+  text-align: center;
+}
+
+.result__placeholder--error {
+  border-color: #efcaca;
+  background: #fffafa;
+  color: #b54747;
+}
+
+@media (max-width: 640px) {
+  .result__header {
+    flex-wrap: wrap;
+  }
+
+  .result__title {
+    min-width: 140px;
+  }
+
+  .result__actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .result__body {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .result__cursor {
+    animation: none;
+  }
 }

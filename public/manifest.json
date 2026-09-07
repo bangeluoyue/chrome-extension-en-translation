@@ -17,6 +17,6 @@
       "run_at": "document_idle"
     }
   ],
-  "permissions": ["storage", "activeTab"],
+  "permissions": ["storage", "activeTab", "clipboardWrite"],
   "host_permissions": ["<all_urls>"]
 }
