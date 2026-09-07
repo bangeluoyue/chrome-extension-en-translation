@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "网页翻译",
+  "version": "0.1.0",
+  "description": "提取网页文章正文，转换为 Markdown 并调用 AI 翻译",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "网页翻译"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": ["<all_urls>"]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "chrome-extension-en-translation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome 插件：提取网页正文并翻译为 Markdown",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "md-wx": "^1.0.1",
+    "openai": "^4.104.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.2.9",
+    "@types/node": "^18.19.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.6.0",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.0"
+  }
+}
