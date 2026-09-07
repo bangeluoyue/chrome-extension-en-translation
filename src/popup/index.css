@@ -1,66 +1,81 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC',
-    'Microsoft YaHei', sans-serif;
-  color: #333;
-}
+@import '../styles/global.css';
 
 .popup {
   width: 320px;
-  padding: 12px;
+  padding: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  background: #fff;
+  gap: var(--space-4);
+  background: var(--color-surface);
 }
 
 .popup__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #eee;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .popup__title {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
 }
 
 .popup__settings {
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
   background: none;
-  color: #4a90d9;
+  color: var(--color-text-secondary);
   cursor: pointer;
   font-size: 13px;
+  transition: background-color var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.popup__settings:hover {
+  background: var(--color-brand-subtle);
+  color: var(--color-brand);
+}
+
+.popup__settings:focus-visible {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow: var(--shadow-focus);
 }
 
 .popup__section {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--space-2);
 }
 
 .popup__label {
-  font-size: 12px;
-  color: #888;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
 }
 
 .popup__card {
-  padding: 10px;
-  border: 1px solid #e5e5e5;
-  border-radius: 6px;
-  background: #fafafa;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-subtle);
 }
 
 .popup__article-title {
   font-size: 13px;
-  color: #333;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-text);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -68,89 +83,66 @@ body {
 }
 
 .popup__status {
-  margin-top: 4px;
+  margin-top: var(--space-1);
   font-size: 12px;
-  color: #999;
+  color: var(--color-text-tertiary);
 }
 
 .popup__status--extracting {
-  color: #4a90d9;
+  color: var(--color-brand);
 }
 
 .popup__status--success {
-  color: #248a3d;
+  color: var(--color-success);
 }
 
 .popup__status--error {
-  color: #c43d3d;
+  color: var(--color-error);
 }
 
 .popup__recent-link {
-  display: inline-block;
-  margin-top: 7px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: var(--space-2);
   padding: 0;
   border: 0;
   background: none;
-  color: #4a90d9;
+  color: var(--color-brand);
   cursor: pointer;
   font-size: 12px;
+  font-weight: 500;
+}
+
+.popup__recent-link:hover {
+  text-decoration: underline;
 }
 
 .popup__markdown {
   max-height: 220px;
-  padding: 10px;
+  padding: var(--space-3);
   overflow: auto;
-  border: 1px solid #e5e5e5;
-  border-radius: 6px;
-  background: #fafafa;
-  color: #444;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-subtle);
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
   font-size: 11px;
-  line-height: 1.55;
+  line-height: 1.6;
   white-space: pre-wrap;
   word-break: break-word;
 }
 
-.btn {
-  display: block;
+.popup .btn {
   width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.btn--primary {
-  background: #4a90d9;
-  color: #fff;
-}
-
-.btn--primary:hover {
-  background: #3a7bc8;
-}
-
-.btn--primary:disabled {
-  background: #9cbfe4;
-  cursor: wait;
-}
-
-.btn--secondary {
-  background: #f0f0f0;
-  color: #333;
-}
-
-.btn--secondary:disabled {
-  background: #f5f5f5;
-  color: #bbb;
-  cursor: not-allowed;
 }
 
 .popup__hint {
   font-size: 12px;
-  color: #999;
+  color: var(--color-text-tertiary);
+  text-align: center;
 }
 
 .popup__hint--error {
-  color: #c43d3d;
+  color: var(--color-error);
 }
