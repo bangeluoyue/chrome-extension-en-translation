@@ -1,4 +1,5 @@
 import type { ExtractArticleRequest, ExtractArticleResponse, ExtractedArticle } from '../types/extraction'
+import { injectArticleExtractor } from '../adapters/chromeAccess'
 
 // 与 Content Script 仅共享类型，避免 Rollup 生成浏览器无法加载的 Content Script 共享模块。
 const EXTRACT_ARTICLE_MESSAGE: ExtractArticleRequest['type'] = 'EXTRACT_ARTICLE'
@@ -9,6 +10,8 @@ export async function extractArticleFromActiveTab(): Promise<ExtractedArticle> {
   if (activeTab?.id === undefined) {
     throw new Error('未找到当前标签页')
   }
+
+  await injectArticleExtractor(activeTab.id)
 
   const request: ExtractArticleRequest = { type: EXTRACT_ARTICLE_MESSAGE }
   const response: unknown = await chrome.tabs.sendMessage<ExtractArticleRequest, ExtractArticleResponse>(

@@ -3,6 +3,7 @@ const DEFAULT_INTERVAL_MS = 20
 export interface TypewriterOptions {
   intervalMs?: number
   signal?: AbortSignal
+  initialText?: string
 }
 
 export async function playTypewriterStream(
@@ -10,9 +11,9 @@ export async function playTypewriterStream(
   onUpdate: (markdown: string) => void,
   options: TypewriterOptions = {},
 ): Promise<string> {
-  const { intervalMs = DEFAULT_INTERVAL_MS, signal } = options
+  const { intervalMs = DEFAULT_INTERVAL_MS, signal, initialText = '' } = options
   let buffer = ''
-  let output = ''
+  let output = initialText
   let producerFinished = false
   let producerError: unknown
   const consumerSignal: { wake?: () => void } = {}

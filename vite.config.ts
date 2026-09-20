@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'node:path'
 
-// Chrome 扩展多入口构建：popup / result / settings 为 HTML 页面入口，
+// Chrome 扩展多入口构建：popup / sidepanel / result / settings 为 HTML 页面入口，
 // background / content 为独立脚本入口。
 export default defineConfig({
   // 使用相对路径，避免 Chrome 扩展页面加载资源时出现绝对路径解析问题。
@@ -14,6 +14,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         popup: resolve('popup.html'),
+        sidepanel: resolve('sidepanel.html'),
         result: resolve('result.html'),
         settings: resolve('settings.html'),
         background: resolve('src/background/index.ts'),

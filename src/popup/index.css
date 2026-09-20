@@ -82,10 +82,15 @@
   overflow: hidden;
 }
 
-.popup__status {
+.popup__site {
   margin-top: var(--space-1);
   font-size: 12px;
   color: var(--color-text-tertiary);
+}
+
+.popup__status {
+  font-size: 12px;
+  color: var(--color-text-secondary);
 }
 
 .popup__status--extracting {
@@ -100,37 +105,54 @@
   color: var(--color-error);
 }
 
-.popup__recent-link {
-  display: inline-flex;
+.popup__recent {
+  display: flex;
   align-items: center;
-  gap: 2px;
-  margin-top: var(--space-2);
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--color-brand);
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.popup__recent-link:hover {
-  text-decoration: underline;
-}
-
-.popup__markdown {
-  max-height: 220px;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
   padding: var(--space-3);
-  overflow: auto;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: var(--color-surface-subtle);
-  color: var(--color-text-secondary);
-  font-family: var(--font-mono);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.popup__recent:hover {
+  border-color: var(--color-brand-border);
+  background: var(--color-brand-subtle);
+}
+
+.popup__recent:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.popup__recent-title {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.popup__recent-meta {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-text-tertiary);
   font-size: 11px;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  word-break: break-word;
+}
+
+.popup__feedback {
+  min-height: 34px;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
 }
 
 .popup .btn {
@@ -138,11 +160,11 @@
 }
 
 .popup__hint {
+  margin-top: var(--space-1);
   font-size: 12px;
   color: var(--color-text-tertiary);
-  text-align: center;
 }
 
-.popup__hint--error {
+.popup__status--error + .popup__hint {
   color: var(--color-error);
 }

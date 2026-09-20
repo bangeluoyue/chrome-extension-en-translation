@@ -17,6 +17,22 @@ export interface PendingTranslation {
   createdAt: number
 }
 
+// 从网页右键菜单发送到 Side Panel 的临时划词内容。
+export interface PendingSelection {
+  sourceText: string
+  pageTitle: string
+  sourceUrl: string
+}
+
+// 长文章翻译的临时检查点。只保存已完成段译文，正文仍从 pendingTranslation 读取。
+export interface TranslationProgress {
+  sourceUrl: string
+  articleCreatedAt: number
+  segmentCount: number
+  completedSegments: string[]
+  updatedAt: number
+}
+
 // 最近一次翻译结果
 export interface TranslationResult {
   title: string
@@ -26,3 +42,14 @@ export interface TranslationResult {
   translatedMarkdown: string
   createdAt: number
 }
+
+export interface TranslationHistoryEntry extends TranslationResult {
+  id: string
+}
+
+export interface CompletedTranslationSaveResult {
+  removedHistoryCount: number
+}
+
+export const STORAGE_CAPACITY_ERROR_MESSAGE =
+  '本地存储空间不足；请删除较早历史或清理扩展本地数据后重试'

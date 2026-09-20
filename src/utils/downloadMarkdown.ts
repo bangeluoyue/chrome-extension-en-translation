@@ -24,9 +24,9 @@ export function createMarkdownFilename(title: string): string {
   const safeTitle = title
     .replace(/[<>:"/\\|?*\u0000-\u001f]/g, '-')
     .replace(/\s+/g, ' ')
-    .replace(/[.\s]+$/g, '')
     .trim()
     .slice(0, MAX_FILENAME_LENGTH)
+    .replace(/[.\s]+$/g, '')
 
   return `${safeTitle || FALLBACK_FILENAME}.md`
 }
